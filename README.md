@@ -4,7 +4,7 @@ Open Git Bash in your 372 directory -  right click in explorer in that directory
 
 FIRST, clone the repository - git clone https://github.com/ehunten/DrinkMe.git
 
-Switch to the branch you want to work on - git checkout -b branchname
+Switch to the branch you want to work on - git checkout branchname
 (i. e. git checkout -b dom1 or git checkout -b hannah1)
 
 Do your work in eclipse

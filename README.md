@@ -17,8 +17,9 @@ Go back to git bash and:
 ALSO whenever you finish up working on your branch, before you commit and push, fetch the master!!!
 git pull
 git fetch
+git merge master
 
-#Do this the first time you check your branch out, after cloning the repository. You'll know it worked if this readme file in your branch updates to match this one, which is on the master. 
+#Do this the first time you check your branch out, after cloning the repository. You'll know it worked if this readme file in your branch updates to match this one, which is on the master. And then do it all the time.
 
 This will get you up to date with the master so there's no conflicts when I go to merge the branchs.
 If you have any questions just ask me

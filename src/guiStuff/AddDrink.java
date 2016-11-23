@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.ingredients.Liquid;
+import org.ingredients.Solid;
 
 import controller.Recipe;
 
@@ -51,20 +52,25 @@ public class AddDrink extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddDrink() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JTextArea textArea = new JTextArea();
-			textArea.setBounds(35, 35, 116, 170);
+			textArea.setBounds(10, 36, 116, 170);
 			textArea.setWrapStyleWord(true);
 			contentPanel.add(textArea);
 		}
 		{
 			txtName = new JTextField();
-			txtName.setBounds(186, 38, 117, 20);
+			txtName.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//figure out how to detect an enter in the field
+				}
+			});
+			txtName.setBounds(136, 38, 289, 20);
 			txtName.setHorizontalAlignment(SwingConstants.LEFT);
 			txtName.setText("Name");
 			contentPanel.add(txtName);
@@ -72,8 +78,8 @@ public class AddDrink extends JDialog {
 		}
 		{
 			txtamounttype = new JTextField();
-			txtamounttype.setBounds(186, 68, 117, 20);
-			txtamounttype.setText("(amount,type)");
+			txtamounttype.setBounds(136, 68, 289, 20);
+			txtamounttype.setText("Name,Color,Temperature,Amount");
 			contentPanel.add(txtamounttype);
 			txtamounttype.setColumns(10);
 		}
@@ -86,15 +92,11 @@ public class AddDrink extends JDialog {
 					Liquid curr = new Liquid();
 					
 					if(curr.formatGood(txtamounttype.getText()) == true){
-						String name = "";
-						String color = "";
-						String temperature = "";
-						Double amount = 0.0;
-						boolean isalc = false;
-						
-						//parse string and setter stuff
-						
+						curr.parse(txtamounttype.getText());
+						curr.setAlcohol(true);
 						userInput.getLiquids().add(curr);
+						
+						//display recipe in box
 					}
 					else{
 						JOptionPane.showMessageDialog(null, 
@@ -102,39 +104,74 @@ public class AddDrink extends JDialog {
 								"Name,Color,Temp,Amount", 
 								JOptionPane.PLAIN_MESSAGE);
 					}
-					
-				
-					
-					
-					
-					
 				}
 			});
-			btnAddAlc.setBounds(323, 67, 89, 23);
+			btnAddAlc.setBounds(435, 67, 89, 23);
 			contentPanel.add(btnAddAlc);
 		}
 		{
 			txtamounttype_1 = new JTextField();
-			txtamounttype_1.setBounds(186, 96, 117, 20);
-			txtamounttype_1.setText("(amount,type)");
+			txtamounttype_1.setBounds(136, 96, 289, 20);
+			txtamounttype_1.setText("Name,Color,Temperature,Amount");
 			contentPanel.add(txtamounttype_1);
 			txtamounttype_1.setColumns(10);
 		}
 		{
 			JButton btnAddLiquid = new JButton("Add Liquid");
-			btnAddLiquid.setBounds(327, 95, 81, 23);
+			btnAddLiquid.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					//check for proper formatting
+					//add liquid to recipe and dipslay
+					Liquid curr = new Liquid();
+					
+					if(curr.formatGood(txtamounttype_1.getText()) == true){
+						curr.parse(txtamounttype_1.getText());
+						curr.setAlcohol(false);
+						userInput.getLiquids().add(curr);
+						
+						//display recipe in box
+					}
+					else{
+						JOptionPane.showMessageDialog(null, 
+								"Please use correct formatting:", 
+								"Name,Color,Temp,Amount", 
+								JOptionPane.PLAIN_MESSAGE);
+					}
+				}
+			});
+			btnAddLiquid.setBounds(435, 95, 81, 23);
 			contentPanel.add(btnAddLiquid);
 		}
 		{
 			txtSolidIngredient = new JTextField();
-			txtSolidIngredient.setBounds(186, 124, 117, 20);
-			txtSolidIngredient.setText("Solid Ingredient");
+			txtSolidIngredient.setBounds(136, 124, 289, 20);
+			txtSolidIngredient.setText("Name,Amount,Optional(Y/N?)");
 			contentPanel.add(txtSolidIngredient);
 			txtSolidIngredient.setColumns(10);
 		}
 		{
 			JButton btnAddSolid = new JButton("Add Solid");
-			btnAddSolid.setBounds(329, 123, 77, 23);
+			btnAddSolid.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//check for proper formatting
+					//add solid to recipe and dipslay
+					Solid curr = new Solid();
+					
+					if(curr.formatGood(txtSolidIngredient.getText()) == true){
+						curr.parse(txtSolidIngredient.getText());
+						userInput.getSolids().add(curr);
+						
+						//display recipe in box
+					}
+					else{
+						JOptionPane.showMessageDialog(null, 
+								"Please use correct formatting:", 
+								"Name,Amount,Optional?(Y,N)", 
+								JOptionPane.PLAIN_MESSAGE);
+					}
+				}
+			});
+			btnAddSolid.setBounds(435, 123, 77, 23);
 			contentPanel.add(btnAddSolid);
 		}
 		{

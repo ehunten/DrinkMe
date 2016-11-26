@@ -32,7 +32,7 @@ public class DrinkMeGUI extends JFrame {
 	//git merge master
 	//git add *
 	//git commit -m "messsage contents"
-	//git push set-upstream origin hannah1
+	//git push --set-upstream origin hannah1
 
 	private JPanel contentPane;
 

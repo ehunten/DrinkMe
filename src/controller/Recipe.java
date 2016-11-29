@@ -13,6 +13,15 @@ public class Recipe {
 	private String hangoverPotential;
 	private Glass glass;
 	
+	public Recipe(){
+		name = "";
+		liquids = new ArrayList<Liquid>();
+		solids = new ArrayList<Solid>();
+		directions = new ArrayList<String>();
+		hangoverPotential = "you dead";
+		glass = new Glass();
+	}
+	
 	
 	public String getName() {
 		return name;

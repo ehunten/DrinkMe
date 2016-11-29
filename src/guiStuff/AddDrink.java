@@ -16,14 +16,9 @@ import controller.Recipe;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 
 public class AddDrink extends JDialog {
 
@@ -33,6 +28,8 @@ public class AddDrink extends JDialog {
 	private JTextField txtamounttype_1;
 	private JTextField txtSolidIngredient;
 	private Recipe userInput;
+	private JTextArea textArea;
+	private String output;
 	
 
 	/**
@@ -52,13 +49,18 @@ public class AddDrink extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddDrink() {
-		setBounds(100, 100, 550, 300);
+		
+		//initializing the user recipe
+		userInput = new Recipe();
+		
+		setBounds(100, 100, 575, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JTextArea textArea = new JTextArea();
+			//had to refactor this to a field so i can access it in the action listners
+			textArea = new JTextArea();
 			textArea.setBounds(10, 36, 116, 170);
 			textArea.setWrapStyleWord(true);
 			contentPanel.add(textArea);
@@ -68,6 +70,10 @@ public class AddDrink extends JDialog {
 			txtName.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//figure out how to detect an enter in the field
+					String name = txtName.getText();
+					userInput.setName(name);
+					output = name + System.lineSeparator();
+					textArea.setText(output);
 				}
 			});
 			txtName.setBounds(136, 38, 289, 20);
@@ -95,7 +101,8 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype.getText());
 						curr.setAlcohol(true);
 						userInput.getLiquids().add(curr);
-						
+						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						textArea.setText(output);
 						//display recipe in box
 					}
 					else{
@@ -106,7 +113,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddAlc.setBounds(435, 67, 89, 23);
+			btnAddAlc.setBounds(435, 67, 114, 23);
 			contentPanel.add(btnAddAlc);
 		}
 		{
@@ -128,6 +135,8 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype_1.getText());
 						curr.setAlcohol(false);
 						userInput.getLiquids().add(curr);
+						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
+						textArea.setText(output);
 						
 						//display recipe in box
 					}
@@ -139,7 +148,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddLiquid.setBounds(435, 95, 81, 23);
+			btnAddLiquid.setBounds(435, 95, 114, 23);
 			contentPanel.add(btnAddLiquid);
 		}
 		{
@@ -160,7 +169,8 @@ public class AddDrink extends JDialog {
 					if(curr.formatGood(txtSolidIngredient.getText()) == true){
 						curr.parse(txtSolidIngredient.getText());
 						userInput.getSolids().add(curr);
-						
+						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						textArea.setText(output);
 						//display recipe in box
 					}
 					else{
@@ -171,7 +181,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddSolid.setBounds(435, 123, 77, 23);
+			btnAddSolid.setBounds(435, 123, 114, 23);
 			contentPanel.add(btnAddSolid);
 		}
 		{
@@ -184,6 +194,7 @@ public class AddDrink extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						//add in complete new recipie and exit window
+						//how do i add recipes to the database? cause this one is done
 						dispose();
 					}
 				});

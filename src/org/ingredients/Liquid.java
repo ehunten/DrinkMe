@@ -48,10 +48,10 @@ public class Liquid extends Ingredient{
 		// TODO Auto-generated method stub
 		
 		//expecting name,color,temperature,amount
-		//4 commas
+		//3 commas
 		
 		int commas = in.length() - in.replace(",", "").length();
-		if(commas == 4){
+		if(commas == 3){
 			return true;
 		}
 		else{

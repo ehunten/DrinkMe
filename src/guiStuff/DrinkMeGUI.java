@@ -1,6 +1,5 @@
 package guiStuff;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,13 +9,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
-import javax.swing.BoxLayout;
-import java.awt.Component;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 public class DrinkMeGUI extends JFrame {
 	
@@ -32,7 +30,7 @@ public class DrinkMeGUI extends JFrame {
 	//git merge master
 	//git add *
 	//git commit -m "messsage contents"
-	//git push set-upstream origin hannah1
+	//git push --set-upstream origin hannah1
 
 	private JPanel contentPane;
 
@@ -58,7 +56,7 @@ public class DrinkMeGUI extends JFrame {
 	public DrinkMeGUI() {
 		setTitle("Drink Me");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 500);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -128,14 +126,24 @@ public class DrinkMeGUI extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Drink Me Cocktail Picking System");
-		lblWelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblWelcomeToThe, BorderLayout.NORTH);
-		
-		JLabel lblPleaseChooseAn = new JLabel("Please choose an Action from the  Menus");
+		JLabel lblPleaseChooseAn = new JLabel("Please choose an Action from the Above Menus");
+		lblPleaseChooseAn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPleaseChooseAn.setBounds(5, 400, 574, 40);
 		lblPleaseChooseAn.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblPleaseChooseAn, BorderLayout.CENTER);
+		contentPane.add(lblPleaseChooseAn);
+		
+		JLabel lblNewLabel = new JLabel("Welcome to the Drink Me Cocktail Picking System");
+		lblNewLabel.setForeground(Color.MAGENTA);
+		lblNewLabel.setFont(new Font("Rage Italic", Font.PLAIN, 30));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(5, 28, 574, 32);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\hingl\\workspace\\DrinkMe\\bin\\mainMenuBackground.jpg"));
+		lblNewLabel_1.setBounds(0, 11, 584, 429);
+		contentPane.add(lblNewLabel_1);
 	}
 }

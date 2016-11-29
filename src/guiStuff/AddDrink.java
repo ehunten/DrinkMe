@@ -113,7 +113,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddAlc.setBounds(435, 67, 99, 23);
+			btnAddAlc.setBounds(435, 67, 114, 23);
 			contentPanel.add(btnAddAlc);
 		}
 		{
@@ -148,7 +148,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddLiquid.setBounds(435, 95, 99, 23);
+			btnAddLiquid.setBounds(435, 95, 114, 23);
 			contentPanel.add(btnAddLiquid);
 		}
 		{
@@ -181,7 +181,7 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddSolid.setBounds(435, 123, 99, 23);
+			btnAddSolid.setBounds(435, 123, 114, 23);
 			contentPanel.add(btnAddSolid);
 		}
 		{

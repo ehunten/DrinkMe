@@ -9,7 +9,7 @@ public class Recipe {
 	private String name;
 	private ArrayList<Liquid> liquids;
 	private ArrayList<Solid> solids;
-	private ArrayList<String> directions;
+	private String[] directions;
 	private String hangoverPotential;
 	private Glass glass;
 	
@@ -17,12 +17,17 @@ public class Recipe {
 		name = "";
 		liquids = new ArrayList<Liquid>();
 		solids = new ArrayList<Solid>();
-		directions = new ArrayList<String>();
+		directions = new String[225];
 		hangoverPotential = "you dead";
 		glass = new Glass();
 	}
 	
 	
+	public void setDirections(String[] directions) {
+		this.directions = directions;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -41,12 +46,7 @@ public class Recipe {
 	public void setSolids(ArrayList<Solid> solids) {
 		this.solids = solids;
 	}
-	public ArrayList<String> getDirections() {
-		return directions;
-	}
-	public void setDirections(ArrayList<String> directions) {
-		this.directions = directions;
-	}
+
 	public String getHangoverPotential() {
 		return hangoverPotential;
 	}

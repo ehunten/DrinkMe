@@ -22,7 +22,9 @@ public class DataBaseAdaptor {
 	
 	public static void main(String[] args) throws SQLException {
 		DataBaseAdaptor db = new DataBaseAdaptor();
+		db.createBasicDrinkDB();
 		db.getAllDrinks();
+		
 	}
 	
 	public void createBasicDrinkDB() {
@@ -36,53 +38,55 @@ public class DataBaseAdaptor {
 					+ "mixer varchar(255), " 
 					+ "solid varchar(255), "
 					+ "glass vachar(255), "
-					+ "directions varchar(255))";
+					+ "directions varchar(255), "
+					+ "hangoverPotential varchar(255))";
 			stmt.executeUpdate(sql);
 
 			///////INSERT DRINKS
 			sql = "INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Whiskey Sour', '1.5oz whiskey', '1oz lemon juice, 2oz water',"
 					+ "'1 cube sugar, 3-4 ice cubes', 'Lowball', 'Crush sugar cube with mortar, add lemon juice and then"
-					+ "dilute with water. Shake with whiskey and pour over ice.')";
+					+ "dilute with water. Shake with whiskey and pour over ice.', 'Ya fine.')";
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Long Island Iced Tea', '.5oz Vodka, .5oz Rum, .5oz Tequila, .5oz Gin, .5oz Triple Sec', '1oz lemon juice, splash of cola',"
 					+ "'ice, lemon spiral', 'Highball', "
-					+ "'Add all ingredients over ice, then stir gently, add lemon spiral and serve.')";
+					+ "'Add all ingredients over ice, then stir gently, add lemon spiral and serve.', 'DANGER zone!')";
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Margarita', '2oz tequila, 1oz triple sec', '2oz lime juice',"
 					+ "'lime slice, salt', 'Margarita', 'Rub the rim of the glass with the lime, "
 					+ "then rub the salt on the rim. Shake the other ingredients and pour " 
-					+ "over ice, or blend.')";
+					+ "over ice, or blend.', 'Resaca verdad.')";
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Mojito', '1.5oz White Rum', '1oz lime juice, splash of soda water',"
 					+ "'6 leaves mint, 2tsp sugar, ice', 'Highball', 'Muddle mint with sugar and lime juice, "
 					+ "then add rum and top with soda water. " 
-					+ "Pour over ice.')";
+					+ "Pour over ice.', 'I was hungover before it was cool.')";
 			stmt.executeUpdate(sql);
-			/*
+			
 			sql = "INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Martini', '2oz Gin, Dry Vermouth', 'none', "
 					+ "'1 green olive, ice', 'Cocktail glass', " 
 					+ "'Swirl a little bit of dry vermouth in the glass to coat it, then pour out excess."
-					+ "Gently shake or stir gin with ice before straining into glass. Garnish with olive.')";
+					+ "Gently shake or stir gin with ice before straining into glass. Garnish with olive.', "
+					+ "'Who gets drunk on martinis? Come on.')";
 			stmt.executeUpdate(sql);
-			*/
+			
 			stmt.close();
 			c.commit();
 		} catch (SQLException e) {
@@ -92,26 +96,26 @@ public class DataBaseAdaptor {
 		
 	}
 	
-	public String getAllDrinks() {
-		String drink = "";
+	public ArrayList<String> getAllDrinks() {
+		ArrayList<String> drinkList = null;
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
 		      while ( rs.next() ) {
-		         String  name = rs.getString("name");
+		         String name = rs.getString("name");
 			      System.out.println("Name = " + name);
-			      drink = name;
+			      
 		      }
 		      rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}  
-		return drink;
+		return drinkList;
 	}
 
 	public String[] getDrinkByName(String name) {
-		String drink[] = new String[5];
+		String drink[] = new String[6];
 		String query = "SELECT * FROM drinks WHERE name = ?";
 
 		try {
@@ -124,6 +128,7 @@ public class DataBaseAdaptor {
 		        drink[2] = rs.getString("solid");
 		        drink[3] = rs.getString("glass");
 		        drink[4] = rs.getString("directions");
+		        drink[5] = rs.getString("hangoverPotential");
 
 		    }
 		} catch (SQLException e) {
@@ -176,19 +181,20 @@ public class DataBaseAdaptor {
 		return drinks;
 	}
 
-	public void addDrink(String name, String alcohol, String mixer, String solid, String glass, String directions) {
+	public void addDrink(String name, String alcohol, String mixer, String solid, String glass, String directions, String hp) {
 		try {
 			PreparedStatement statement = c.prepareStatement(
 					"INSERT INTO drinks" 
 					+ "(name, alcohol, mixer, solid, glass, directions) "
 					+ "VALUES "
-					+ "(?,?,?,?,?,?)");
+					+ "(?,?,?,?,?,?,?)");
 			statement.setString(1,name);
 			statement.setString(2,alcohol);
 			statement.setString(3,mixer);
 			statement.setString(4,solid);
 			statement.setString(5,glass);
 			statement.setString(6,directions);
+			statement.setString(6, hp);
 			statement.executeUpdate();
 	        c.commit();
 		} catch (SQLException e) {

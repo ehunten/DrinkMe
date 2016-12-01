@@ -22,6 +22,10 @@ public class DataBaseAdaptor {
 	
 	public static void main(String[] args) throws SQLException {
 		DataBaseAdaptor db = new DataBaseAdaptor();
+		//db.createBasicDrinkDB();
+		
+		//dom needs to add squlite jar file to build path
+		//drink me propteries pick it
 		db.getAllDrinks();
 	}
 	

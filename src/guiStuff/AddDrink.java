@@ -12,12 +12,14 @@ import javax.swing.border.EmptyBorder;
 import org.ingredients.Liquid;
 import org.ingredients.Solid;
 
+import controller.DataBaseAdaptor;
 import controller.Recipe;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
@@ -36,6 +38,7 @@ public class AddDrink extends JDialog {
 	private String output;
 	private JEditorPane editorPane;
 	private final int maxChar = 225;
+	private JTextField txtHangoverPotential;
 	
 
 	/**
@@ -109,7 +112,7 @@ public class AddDrink extends JDialog {
 						userInput.getLiquids().add(curr);
 						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
-						//display recipe in box
+						
 					}
 					else{
 						JOptionPane.showMessageDialog(null, 
@@ -214,11 +217,11 @@ public class AddDrink extends JDialog {
 		contentPanel.add(comboBox);
 		
 		editorPane = new JEditorPane();
-		editorPane.setBounds(185, 217, 289, 100);
+		editorPane.setBounds(185, 242, 289, 75);
 		contentPanel.add(editorPane);
 		
 		JLabel lblPleaseEnterDirections = new JLabel("Please enter directions below:");
-		lblPleaseEnterDirections.setBounds(185, 188, 289, 14);
+		lblPleaseEnterDirections.setBounds(185, 217, 289, 14);
 		contentPanel.add(lblPleaseEnterDirections);
 		
 		JButton btnDirectionsComplete = new JButton("Directions Complete");
@@ -241,7 +244,7 @@ public class AddDrink extends JDialog {
 				
 			}
 		});
-		btnDirectionsComplete.setBounds(484, 217, 140, 23);
+		btnDirectionsComplete.setBounds(484, 242, 140, 23);
 		contentPanel.add(btnDirectionsComplete);
 		
 		JButton btnClearDirections = new JButton("Clear Directions");
@@ -250,8 +253,23 @@ public class AddDrink extends JDialog {
 				editorPane.setText("");
 			}
 		});
-		btnClearDirections.setBounds(484, 251, 140, 23);
+		btnClearDirections.setBounds(484, 281, 140, 23);
 		contentPanel.add(btnClearDirections);
+		{
+			txtHangoverPotential = new JTextField();
+			txtHangoverPotential.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					String hp = txtHangoverPotential.getText();
+					userInput.setHangoverPotential(hp);
+					output = output +  hp + System.lineSeparator();
+					textArea.setText(output);
+				}
+			});
+			txtHangoverPotential.setText("Hangover Potential");
+			txtHangoverPotential.setBounds(185, 186, 289, 20);
+			contentPanel.add(txtHangoverPotential);
+			txtHangoverPotential.setColumns(10);
+		}
 		{
 			
 			JPanel buttonPane = new JPanel();
@@ -262,9 +280,17 @@ public class AddDrink extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String[] temp = userInput.giveStrings();
+						try {
+							//creates new connection to the database
+							DataBaseAdaptor db = new DataBaseAdaptor();
+							//adds in the new drink using the proper formatted strings
+							db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
+							//db.getAllDrinks();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 
-						//add in complete new recipie and exit window
-						//how do i add recipes to the database? cause this one is done
 						dispose();
 					}
 				});

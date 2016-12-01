@@ -26,11 +26,11 @@ public class DrinkMeGUI extends JFrame {
 	//hannahs totally unrelated git notes
 	//Git bash into Drink ME
 	//git checkout hannahbranch
-	//git pull
+	
 	//git fetch
 	//git merge master
 	// lots of work
-	//git pull
+	
 	//git fetch
 	//git merge master
 	//git add *

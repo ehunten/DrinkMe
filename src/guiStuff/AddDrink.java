@@ -25,6 +25,8 @@ import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class AddDrink extends JDialog {
 
@@ -58,12 +60,14 @@ public class AddDrink extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddDrink() {
+		setTitle("Add Drink");
 		
 		//initializing the user recipe
 		userInput = new Recipe();
 		
 		setBounds(100, 100, 650, 400);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setToolTipText("");
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
@@ -221,6 +225,9 @@ public class AddDrink extends JDialog {
 		contentPanel.add(editorPane);
 		
 		JLabel lblPleaseEnterDirections = new JLabel("Please enter directions below:");
+		lblPleaseEnterDirections.setForeground(new Color(255, 255, 255));
+		lblPleaseEnterDirections.setBackground(new Color(0, 128, 0));
+		lblPleaseEnterDirections.setOpaque(true);
 		lblPleaseEnterDirections.setBounds(185, 217, 289, 14);
 		contentPanel.add(lblPleaseEnterDirections);
 		
@@ -270,6 +277,11 @@ public class AddDrink extends JDialog {
 			contentPanel.add(txtHangoverPotential);
 			txtHangoverPotential.setColumns(10);
 		}
+		
+		JLabel lblAdddrinkbackground = new JLabel("");
+		lblAdddrinkbackground.setIcon(new ImageIcon("src/AddDrinkBack.jpg"));
+		lblAdddrinkbackground.setBounds(0, 0, 624, 328);
+		contentPanel.add(lblAdddrinkbackground);
 		{
 			
 			JPanel buttonPane = new JPanel();

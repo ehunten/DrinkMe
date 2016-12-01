@@ -262,11 +262,7 @@ public class AddDrink extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String[] temp = userInput.giveStrings();
-						for(int i=0; i<userInput.giveStrings().length; ++i){
-							System.out.println(temp[i]);
-							System.out.println(i);
-						}
-						
+
 						//add in complete new recipie and exit window
 						//how do i add recipes to the database? cause this one is done
 						dispose();

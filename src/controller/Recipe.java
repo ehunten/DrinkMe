@@ -89,8 +89,9 @@ public class Recipe {
 		for(int i=0; i<this.getDirections().length; ++i){
 			directString = directString + temp[i] + ", ";
 		}
-		directString = directString.replace("\n", "");
+		directString = directString.replaceAll("[\\n\\r]", "");
 		output[5] = directString;
+		//stuck here cant get rid of new lines
 		return output;
 	}
 	

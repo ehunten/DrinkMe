@@ -64,7 +64,7 @@ public class Recipe {
 	}
 	
 	public String[] giveStrings(){
-		String[] output = {"","","","","",""};
+		String[] output = {"","","","","","",""};
 		//recpie object to seperate strings
 		//name string, alc string (amount name, amount name)
 		//mixer string, solids string, glass STring, directions string
@@ -91,7 +91,7 @@ public class Recipe {
 		}
 		directString = directString.replaceAll("[\\n\\r]", "");
 		output[5] = directString;
-		//stuck here cant get rid of new lines
+		output[6] = this.getHangoverPotential();
 		return output;
 	}
 	

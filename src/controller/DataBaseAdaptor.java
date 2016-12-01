@@ -9,47 +9,20 @@ public class DataBaseAdaptor {
 	Statement stmt = null;
 	
 	public DataBaseAdaptor() throws SQLException {
-//	public static void main( String args[] ) throws SQLException {
-		//Connection c = null;
-		//Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:final.db");
 			c.setAutoCommit(false);
-			System.out.println("Opened database successfully");
-
-			/*stmt = c.createStatement();
-			String sql = "CREATE TABLE drinks" 
-					+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, " 
-					+ "name varchar(50), "
-					+ "alcohol varchar(255), " 
-					+ "mixer varchar(255), " 
-					+ "solid varchar(255), "
-					+ "directions varchar(255))";
-			stmt.executeUpdate(sql);
-			stmt.close(); 	*/
 		} catch (Exception e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		//System.out.println("Table created successfully");
-		
 
-		
-	     // stmt.close();
-	      //c.close();
 	}
 	
 	public static void main(String[] args) throws SQLException {
 		DataBaseAdaptor db = new DataBaseAdaptor();
 		db.getAllDrinks();
-		System.out.println("----------------");
-		db.addDrink("0", "0", "0", "0", "0", "0");
-		db.getAllDrinks();
-		System.out.println("----------------");
-		db.dropDrink("0");
-		db.getAllDrinks();
-		System.out.println("done");
 	}
 	
 	public void createBasicDrinkDB() {

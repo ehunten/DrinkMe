@@ -107,7 +107,7 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype.getText());
 						curr.setAlcohol(true);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						//display recipe in box
 					}
@@ -141,7 +141,7 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype_1.getText());
 						curr.setAlcohol(false);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						
 						//display recipe in box
@@ -175,7 +175,7 @@ public class AddDrink extends JDialog {
 					if(curr.formatGood(txtSolidIngredient.getText()) == true){
 						curr.parse(txtSolidIngredient.getText());
 						userInput.getSolids().add(curr);
-						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						//display recipe in box
 					}
@@ -261,11 +261,12 @@ public class AddDrink extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						String[] temp = userInput.giveStrings();
+						for(int i=0; i<userInput.giveStrings().length; ++i){
+							System.out.println(temp[i]);
+							System.out.println(i);
+						}
 						
-						
-						//recpie object to seperate strings
-						//name string, alc string (amount name, amount name)
-						//mixer string, solids string, glass STring, directions string
 						//add in complete new recipie and exit window
 						//how do i add recipes to the database? cause this one is done
 						dispose();

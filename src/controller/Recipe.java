@@ -26,6 +26,9 @@ public class Recipe {
 	public void setDirections(String[] directions) {
 		this.directions = directions;
 	}
+	public String[] getDirections(){
+		return directions;
+	}
 
 
 	public String getName() {
@@ -60,6 +63,36 @@ public class Recipe {
 		this.glass = glass;
 	}
 	
+	public String[] giveStrings(){
+		String[] output = {"","","","","",""};
+		//recpie object to seperate strings
+		//name string, alc string (amount name, amount name)
+		//mixer string, solids string, glass STring, directions string
+		output[0] = this.getName();
+		for(int i=0; i<this.getLiquids().size(); ++i){
+			if(this.getLiquids().get(i).isAlcohol() == true){
+				output[1] = output[1] + this.getLiquids().get(i).getAmount().toString() + " " 
+						+ this.getLiquids().get(i).getName() + ",";
+			}
+			else{
+				output[2] = output[2] + this.getLiquids().get(i).getAmount().toString() + " " 
+						+ this.getLiquids().get(i).getName() + ",";
+			}
+		}
+		for(int i=0; i<this.getSolids().size(); ++i){
+			output[3] = output[3] + this.getSolids().get(i).getAmount().toString() + " "
+					+ this.getSolids().get(i).getName() + ",";
+		}
+		output[4] = this.getGlass().getShape();
+		String directString = "";
+		String[] temp = this.getDirections();
+		for(int i=0; i<this.getDirections().length; ++i){
+			directString = directString + temp[i] + ", ";
+		}
+		directString = directString.replace("\n", "");
+		output[5] = directString;
+		return output;
+	}
 	
 	
 }

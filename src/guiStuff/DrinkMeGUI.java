@@ -145,14 +145,10 @@ public class DrinkMeGUI extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(5, 28, 574, 32);
 		contentPane.add(lblNewLabel);
-		
-<<<<<<< HEAD
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("src/sunset.jpg"));
-=======
+
 		JLabel lblNewLabel_1 = new JLabel("");	
 		lblNewLabel_1.setIcon(new ImageIcon("src/mainBack.jpg"));
->>>>>>> refs/remotes/origin/master
+
 		lblNewLabel_1.setBounds(0, 11, 584, 429);
 		contentPane.add(lblNewLabel_1);
 

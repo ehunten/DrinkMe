@@ -9,7 +9,7 @@ public class Recipe {
 	private String name;
 	private ArrayList<Liquid> liquids;
 	private ArrayList<Solid> solids;
-	private ArrayList<String> directions;
+	private String[] directions;
 	private String hangoverPotential;
 	private Glass glass;
 	
@@ -17,12 +17,20 @@ public class Recipe {
 		name = "";
 		liquids = new ArrayList<Liquid>();
 		solids = new ArrayList<Solid>();
-		directions = new ArrayList<String>();
+		directions = new String[225];
 		hangoverPotential = "you dead";
 		glass = new Glass();
 	}
 	
 	
+	public void setDirections(String[] directions) {
+		this.directions = directions;
+	}
+	public String[] getDirections(){
+		return directions;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -41,12 +49,7 @@ public class Recipe {
 	public void setSolids(ArrayList<Solid> solids) {
 		this.solids = solids;
 	}
-	public ArrayList<String> getDirections() {
-		return directions;
-	}
-	public void setDirections(ArrayList<String> directions) {
-		this.directions = directions;
-	}
+
 	public String getHangoverPotential() {
 		return hangoverPotential;
 	}
@@ -60,6 +63,37 @@ public class Recipe {
 		this.glass = glass;
 	}
 	
+	public String[] giveStrings(){
+		String[] output = {"","","","","",""};
+		//recpie object to seperate strings
+		//name string, alc string (amount name, amount name)
+		//mixer string, solids string, glass STring, directions string
+		output[0] = this.getName();
+		for(int i=0; i<this.getLiquids().size(); ++i){
+			if(this.getLiquids().get(i).isAlcohol() == true){
+				output[1] = output[1] + this.getLiquids().get(i).getAmount().toString() + " " 
+						+ this.getLiquids().get(i).getName() + ",";
+			}
+			else{
+				output[2] = output[2] + this.getLiquids().get(i).getAmount().toString() + " " 
+						+ this.getLiquids().get(i).getName() + ",";
+			}
+		}
+		for(int i=0; i<this.getSolids().size(); ++i){
+			output[3] = output[3] + this.getSolids().get(i).getAmount().toString() + " "
+					+ this.getSolids().get(i).getName() + ",";
+		}
+		output[4] = this.getGlass().getShape();
+		String directString = "";
+		String[] temp = this.getDirections();
+		for(int i=0; i<this.getDirections().length; ++i){
+			directString = directString + temp[i] + ", ";
+		}
+		directString = directString.replaceAll("[\\n\\r]", "");
+		output[5] = directString;
+		//stuck here cant get rid of new lines
+		return output;
+	}
 	
 	
 }

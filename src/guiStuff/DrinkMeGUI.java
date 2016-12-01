@@ -142,7 +142,7 @@ public class DrinkMeGUI extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\hingl\\workspace\\DrinkMe\\bin\\mainMenuBackground.jpg"));
+		lblNewLabel_1.setIcon(new ImageIcon(".\\.\\bin\\mainMenuBackground.jpg"));
 		lblNewLabel_1.setBounds(0, 11, 584, 429);
 		contentPane.add(lblNewLabel_1);
 	}

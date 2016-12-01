@@ -30,18 +30,13 @@ public class Solid extends Ingredient {
 	public void parse(String in) {
 		// TODO Auto-generated method stub
 		//will parse out the expected format
-		//Name,Amount,Optional(Y,N)
+		//amount,name
 		
 		String[] bits = in.split(",");
-		this.setName(bits[0]);
-		double d = Double.parseDouble(bits[1]);
+		this.setName(bits[1]);
+		double d = Double.parseDouble(bits[0]);
 		this.setAmount(d);
-		if(bits[2]== "Y"){
-			this.setOptional(true);
-		}
-		else{
-			this.setOptional(false);
-		}
+
 		
 	}
 
@@ -50,10 +45,10 @@ public class Solid extends Ingredient {
 	@Override
 	public boolean formatGood(String in) {
 		// TODO Auto-generated method stub
-		// we expect to see Name,Amount,Optional(Y,N)
+		// we expect to see amount,name
 		
 		int commas = in.length() - in.replace(",", "").length();
-		if(commas == 2){
+		if(commas == 1){
 			return true;
 		}
 		else{

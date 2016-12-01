@@ -35,10 +35,8 @@ public class Liquid extends Ingredient{
 		//will parse input and set all elements except is alc
 		
 		String[] bits = in.split(",");
-		this.setName(bits[0]);
-		this.setColor(bits[1]);
-		this.setTemperature(bits[2]);
-		double d = Double.parseDouble(bits[3]);
+		this.setName(bits[1]);
+		double d = Double.parseDouble(bits[0]);
 		this.setAmount(d);
 		
 	}
@@ -47,11 +45,11 @@ public class Liquid extends Ingredient{
 	public boolean formatGood(String in) {
 		// TODO Auto-generated method stub
 		
-		//expecting name,color,temperature,amount
-		//3 commas
+		//expecting amount,name
+		//1 commas
 		
 		int commas = in.length() - in.replace(",", "").length();
-		if(commas == 3){
+		if(commas == 1){
 			return true;
 		}
 		else{

@@ -19,6 +19,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
+import javax.swing.JLabel;
 
 public class AddDrink extends JDialog {
 
@@ -30,6 +34,8 @@ public class AddDrink extends JDialog {
 	private Recipe userInput;
 	private JTextArea textArea;
 	private String output;
+	private JEditorPane editorPane;
+	private final int maxChar = 225;
 	
 
 	/**
@@ -53,7 +59,7 @@ public class AddDrink extends JDialog {
 		//initializing the user recipe
 		userInput = new Recipe();
 		
-		setBounds(100, 100, 575, 300);
+		setBounds(100, 100, 650, 400);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -61,7 +67,7 @@ public class AddDrink extends JDialog {
 		{
 			//had to refactor this to a field so i can access it in the action listners
 			textArea = new JTextArea();
-			textArea.setBounds(10, 36, 116, 170);
+			textArea.setBounds(10, 36, 165, 281);
 			textArea.setWrapStyleWord(true);
 			contentPanel.add(textArea);
 		}
@@ -76,7 +82,7 @@ public class AddDrink extends JDialog {
 					textArea.setText(output);
 				}
 			});
-			txtName.setBounds(136, 38, 289, 20);
+			txtName.setBounds(185, 38, 289, 20);
 			txtName.setHorizontalAlignment(SwingConstants.LEFT);
 			txtName.setText("Name");
 			contentPanel.add(txtName);
@@ -84,8 +90,8 @@ public class AddDrink extends JDialog {
 		}
 		{
 			txtamounttype = new JTextField();
-			txtamounttype.setBounds(136, 68, 289, 20);
-			txtamounttype.setText("Name,Color,Temperature,Amount");
+			txtamounttype.setBounds(185, 69, 289, 20);
+			txtamounttype.setText("Amount,Name");
 			contentPanel.add(txtamounttype);
 			txtamounttype.setColumns(10);
 		}
@@ -101,7 +107,7 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype.getText());
 						curr.setAlcohol(true);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						//display recipe in box
 					}
@@ -113,13 +119,13 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddAlc.setBounds(435, 67, 114, 23);
+			btnAddAlc.setBounds(484, 67, 114, 23);
 			contentPanel.add(btnAddAlc);
 		}
 		{
 			txtamounttype_1 = new JTextField();
-			txtamounttype_1.setBounds(136, 96, 289, 20);
-			txtamounttype_1.setText("Name,Color,Temperature,Amount");
+			txtamounttype_1.setBounds(185, 96, 289, 20);
+			txtamounttype_1.setText("Amount,Name");
 			contentPanel.add(txtamounttype_1);
 			txtamounttype_1.setColumns(10);
 		}
@@ -135,7 +141,7 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype_1.getText());
 						curr.setAlcohol(false);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						
 						//display recipe in box
@@ -148,13 +154,13 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddLiquid.setBounds(435, 95, 114, 23);
+			btnAddLiquid.setBounds(484, 95, 114, 23);
 			contentPanel.add(btnAddLiquid);
 		}
 		{
 			txtSolidIngredient = new JTextField();
-			txtSolidIngredient.setBounds(136, 124, 289, 20);
-			txtSolidIngredient.setText("Name,Amount,Optional(Y/N?)");
+			txtSolidIngredient.setBounds(185, 126, 289, 20);
+			txtSolidIngredient.setText("Amount,Name");
 			contentPanel.add(txtSolidIngredient);
 			txtSolidIngredient.setColumns(10);
 		}
@@ -169,7 +175,7 @@ public class AddDrink extends JDialog {
 					if(curr.formatGood(txtSolidIngredient.getText()) == true){
 						curr.parse(txtSolidIngredient.getText());
 						userInput.getSolids().add(curr);
-						output = output + curr.getAmount() + " parts " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						//display recipe in box
 					}
@@ -181,9 +187,71 @@ public class AddDrink extends JDialog {
 					}
 				}
 			});
-			btnAddSolid.setBounds(435, 123, 114, 23);
+			btnAddSolid.setBounds(484, 123, 114, 23);
 			contentPanel.add(btnAddSolid);
 		}
+		
+		String [] glasses = { "Select Glass" , "Highball" , "Lowball", "Martini", "Margarita", "Shot" , "Daquiri" };
+		JComboBox comboBox = new JComboBox(glasses);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox.getSelectedItem().toString().equals("Select Glass")){
+					JOptionPane.showMessageDialog(null, 
+							"Please Select a Glass Type",
+							"Error",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				else{
+					userInput.getGlass().setShape(comboBox.getSelectedItem().toString());
+					output = output + comboBox.getSelectedItem().toString() + " Glass Selected" + System.lineSeparator();
+					textArea.setText(output);
+				}
+				
+			}
+		});
+
+		comboBox.setBounds(185, 157, 289, 20);
+		contentPanel.add(comboBox);
+		
+		editorPane = new JEditorPane();
+		editorPane.setBounds(185, 217, 289, 100);
+		contentPanel.add(editorPane);
+		
+		JLabel lblPleaseEnterDirections = new JLabel("Please enter directions below:");
+		lblPleaseEnterDirections.setBounds(185, 188, 289, 14);
+		contentPanel.add(lblPleaseEnterDirections);
+		
+		JButton btnDirectionsComplete = new JButton("Directions Complete");
+		btnDirectionsComplete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String direct = "";
+				direct = editorPane.getText();
+				if(direct.length() <=225){
+					String[] bits = direct.split("\n");
+					userInput.setDirections(bits);
+					output = output + direct;
+					textArea.setText(output);
+				}
+				else{
+					JOptionPane.showMessageDialog(null, 
+							"Directions must be less that 225 Characters, Try Again", 
+							"Error",
+							JOptionPane.PLAIN_MESSAGE);
+				}
+				
+			}
+		});
+		btnDirectionsComplete.setBounds(484, 217, 140, 23);
+		contentPanel.add(btnDirectionsComplete);
+		
+		JButton btnClearDirections = new JButton("Clear Directions");
+		btnClearDirections.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editorPane.setText("");
+			}
+		});
+		btnClearDirections.setBounds(484, 251, 140, 23);
+		contentPanel.add(btnClearDirections);
 		{
 			
 			JPanel buttonPane = new JPanel();
@@ -193,6 +261,8 @@ public class AddDrink extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						String[] temp = userInput.giveStrings();
+
 						//add in complete new recipie and exit window
 						//how do i add recipes to the database? cause this one is done
 						dispose();
@@ -214,6 +284,4 @@ public class AddDrink extends JDialog {
 			}
 		}
 	}
-
-	
 }

@@ -46,11 +46,11 @@ public class AddDrink extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main() {
+	public static void main(DataBaseAdaptor db) {
 		try {
-			AddDrink dialog = new AddDrink();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			AddDrink dialog = new AddDrink(db);
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,13 +59,13 @@ public class AddDrink extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AddDrink() {
+	public AddDrink(DataBaseAdaptor db) {
 		setTitle("Add Drink");
 		
 		//initializing the user recipe
 		userInput = new Recipe();
 		
-		setBounds(100, 100, 650, 400);
+		setBounds(100, 100, 675, 400);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setToolTipText("");
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -236,6 +236,7 @@ public class AddDrink extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String direct = "";
 				direct = editorPane.getText();
+				userInput.setDirectString(direct);
 				if(direct.length() <=225){
 					String[] bits = direct.split("\n");
 					userInput.setDirections(bits);
@@ -251,7 +252,7 @@ public class AddDrink extends JDialog {
 				
 			}
 		});
-		btnDirectionsComplete.setBounds(484, 242, 140, 23);
+		btnDirectionsComplete.setBounds(484, 242, 165, 23);
 		contentPanel.add(btnDirectionsComplete);
 		
 		JButton btnClearDirections = new JButton("Clear Directions");
@@ -260,7 +261,7 @@ public class AddDrink extends JDialog {
 				editorPane.setText("");
 			}
 		});
-		btnClearDirections.setBounds(484, 281, 140, 23);
+		btnClearDirections.setBounds(484, 281, 165, 23);
 		contentPanel.add(btnClearDirections);
 		{
 			txtHangoverPotential = new JTextField();
@@ -280,7 +281,7 @@ public class AddDrink extends JDialog {
 		
 		JLabel lblAdddrinkbackground = new JLabel("");
 		lblAdddrinkbackground.setIcon(new ImageIcon("src/AddDrinkBack.jpg"));
-		lblAdddrinkbackground.setBounds(0, 0, 624, 328);
+		lblAdddrinkbackground.setBounds(0, 0, 659, 328);
 		contentPanel.add(lblAdddrinkbackground);
 		{
 			
@@ -292,16 +293,12 @@ public class AddDrink extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String[] temp = userInput.giveStrings();
-						try {
-							//creates new connection to the database
-							DataBaseAdaptor db = new DataBaseAdaptor();
-							//adds in the new drink using the proper formatted strings
-							db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
-							//db.getAllDrinks();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						//creates new connection to the database
+						//DataBaseAdaptor db = new DataBaseAdaptor();
+						//adds in the new drink using the proper formatted strings
+						db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
+						//db.getAllDrinks();
+						
 
 						dispose();
 					}

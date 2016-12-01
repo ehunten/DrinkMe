@@ -8,6 +8,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.DataBaseAdaptor;
+
 public class ByIngred extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -15,11 +17,11 @@ public class ByIngred extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main() {
+	public static void main(DataBaseAdaptor db) {
 		try {
-			ByIngred dialog = new ByIngred();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			ByIngred dialog = new ByIngred(db);
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,7 +30,7 @@ public class ByIngred extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ByIngred() {
+	public ByIngred(DataBaseAdaptor db) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

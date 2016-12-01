@@ -10,6 +10,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.DataBaseAdaptor;
+
 public class ViewRandom extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -17,11 +19,11 @@ public class ViewRandom extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main() {
+	public static void main(DataBaseAdaptor db) {
 		try {
-			ViewRandom dialog = new ViewRandom();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			ViewRandom dialog = new ViewRandom(db);
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,7 +32,7 @@ public class ViewRandom extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ViewRandom() {
+	public ViewRandom(DataBaseAdaptor db) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

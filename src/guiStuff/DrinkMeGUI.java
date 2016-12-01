@@ -5,19 +5,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.DataBaseAdaptor;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+
 import java.awt.Font;
 import java.awt.Color;
 
@@ -32,7 +34,7 @@ public class DrinkMeGUI extends JFrame {
 	// lots of work
 	
 	//git fetch
-	//git merge master
+	//git merge origin/master
 	//git add *
 	//git commit -m "messsage contents"
 	//git push --set-upstream origin hannah1
@@ -57,8 +59,10 @@ public class DrinkMeGUI extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
-	public DrinkMeGUI() {
+	public DrinkMeGUI() throws SQLException {
+		DataBaseAdaptor db = new DataBaseAdaptor();
 		setTitle("Drink Me");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 500);
@@ -72,8 +76,10 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmAddDrink = new JMenuItem("Add Drink");
 		mntmAddDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddDrink d = new AddDrink();
-				d.main();
+				AddDrink d = new AddDrink(db);
+				d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				d.setVisible(true);
+				//d.main(db);
 			}
 		});
 		mnFile.add(mntmAddDrink);
@@ -81,8 +87,9 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmRemoveDrink = new JMenuItem("Remove Drink");
 		mntmRemoveDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RemoveDrink r = new RemoveDrink();
-				r.main();
+				RemoveDrink r = new RemoveDrink(db);
+				r.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				r.setVisible(true);
 			}
 		});
 		mnFile.add(mntmRemoveDrink);
@@ -93,8 +100,9 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmByIngredient = new JMenuItem("By Ingredient");
 		mntmByIngredient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ByIngred b = new ByIngred();
-				b.main();
+				ByIngred b = new ByIngred(db);
+				b.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				b.setVisible(true);
 			}
 		});
 		mnSearch.add(mntmByIngredient);
@@ -102,8 +110,9 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmByName = new JMenuItem("By Name");
 		mntmByName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ByName n = new ByName();
-				n.main();
+				ByName n = new ByName(db);
+				n.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				n.setVisible(true);
 			}
 		});
 		mnSearch.add(mntmByName);
@@ -114,8 +123,9 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmViewAll = new JMenuItem("View All");
 		mntmViewAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewAll  v = new ViewAll();
-				v.main();
+				ViewAll  v = new ViewAll(db);
+				v.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				v.setVisible(true);
 			}
 		});
 		mnView.add(mntmViewAll);
@@ -123,8 +133,9 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmViewRandom = new JMenuItem("View Random");
 		mntmViewRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewRandom w = new ViewRandom();
-				w.main();
+				ViewRandom w = new ViewRandom(db);
+				w.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				w.setVisible(true);
 			}
 		});
 		mnView.add(mntmViewRandom);

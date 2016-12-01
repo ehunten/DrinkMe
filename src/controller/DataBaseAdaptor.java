@@ -34,6 +34,7 @@ public class DataBaseAdaptor {
 		try {
 			stmt = c.createStatement();
 		//////CREATE TABLE
+			/*
 			String sql = "CREATE TABLE drinks" 
 					+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, " 
 					+ "name varchar(50), "
@@ -44,9 +45,9 @@ public class DataBaseAdaptor {
 					+ "directions varchar(255), "
 					+ "hangoverPotential varchar(255))";
 			stmt.executeUpdate(sql);
-
+*/
 			///////INSERT DRINKS
-			sql = "INSERT INTO drinks" 
+			String sql = "INSERT INTO drinks" 
 					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "('Whiskey Sour', '1.5oz whiskey', '1oz lemon juice, 2oz water',"
@@ -188,7 +189,7 @@ public class DataBaseAdaptor {
 		try {
 			PreparedStatement statement = c.prepareStatement(
 					"INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "(?,?,?,?,?,?,?)");
 			statement.setString(1,name);

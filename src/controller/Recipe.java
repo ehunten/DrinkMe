@@ -10,6 +10,7 @@ public class Recipe {
 	private ArrayList<Liquid> liquids;
 	private ArrayList<Solid> solids;
 	private String[] directions;
+	private String directString;
 	private String hangoverPotential;
 	private Glass glass;
 	
@@ -23,6 +24,16 @@ public class Recipe {
 	}
 	
 	
+	public String getDirectString() {
+		return directString;
+	}
+
+
+	public void setDirectString(String directString) {
+		this.directString = directString;
+	}
+
+
 	public void setDirections(String[] directions) {
 		this.directions = directions;
 	}

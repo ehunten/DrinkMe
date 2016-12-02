@@ -5,6 +5,14 @@ public class Solid extends Ingredient {
 	private boolean optional;
 	
 	
+	public Solid () {
+		optional = false;
+	}
+	
+	public Solid (String amt, String name, boolean opt) {
+		super(name, amt);
+		this.optional = opt;
+	}
 	
 	public boolean isOptional() {
 		return optional;
@@ -34,8 +42,9 @@ public class Solid extends Ingredient {
 		
 		String[] bits = in.split(",");
 		this.setName(bits[1]);
-		double d = Double.parseDouble(bits[0]);
-		this.setAmount(d);
+		//double d = Double.parseDouble(bits[0]);
+		//this.setAmount(d);
+		this.setAmount(bits[0]);
 
 		
 	}

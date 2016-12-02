@@ -80,7 +80,6 @@ public class DrinkMeGUI extends JFrame {
 				AddDrink d = new AddDrink(db);
 				d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				d.setVisible(true);
-				//d.main(db);
 			}
 		});
 		mnFile.add(mntmAddDrink);

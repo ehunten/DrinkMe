@@ -28,7 +28,7 @@ public class RemoveDrink extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(DataBaseAdaptor db) {
 		try {
 			RemoveDrink dialog = new RemoveDrink(db);
@@ -39,7 +39,7 @@ public class RemoveDrink extends JDialog {
 		}
 	}
 
-	/**
+	
 	 * Create the dialog.
 	 */
 	public RemoveDrink(DataBaseAdaptor db) {

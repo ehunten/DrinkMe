@@ -16,7 +16,7 @@ public class DisplayDrink extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+
 	public static void main(DataBaseAdaptor db, String name) {
 		try {
 			DisplayDrink dialog = new DisplayDrink(db,name);
@@ -27,7 +27,7 @@ public class DisplayDrink extends JDialog {
 		}
 	}
 
-	/**
+
 	 * Create the dialog.
 	 */
 	public DisplayDrink(DataBaseAdaptor db, String name) {

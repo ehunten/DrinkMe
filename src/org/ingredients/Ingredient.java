@@ -4,10 +4,20 @@ public abstract class Ingredient {
 
 	private String name;
 	private String color;
-	private Double amount;
+	//private Double amount;
+	private String amount;
 	
+	public Ingredient() {
+		this.name = "";
+		this.amount = "";
+	}
 	
-	public void setAmount(Double amount) {
+	public Ingredient(String name, String amount) {
+		this.name = name;
+		this.amount = amount;
+	}
+	
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 	public String getName() {
@@ -22,7 +32,7 @@ public abstract class Ingredient {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public Double getAmount(){
+	public String getAmount(){
 		return amount;
 	}
 

@@ -11,7 +11,10 @@ public class Recipe {
 	private ArrayList<Solid> solids;
 	private String[] directions;
 	private String hangoverPotential;
+	private String dirString;
+	private String gl;
 	private Glass glass;
+	private String hp;
 	
 	public Recipe(){
 		name = "";
@@ -20,6 +23,31 @@ public class Recipe {
 		directions = new String[225];
 		hangoverPotential = "you dead";
 		glass = new Glass();
+	}
+	
+	public Recipe(String name, String alc, String mix, String sol, String gl, String dirString, String hp) {
+		this.name = name;
+		this.dirString = dirString;
+		this.gl = gl;
+		
+		this.glass = new Glass(gl);
+		String l[] = alc.split(", ");
+		for (int i = 0; i<l.length; i++) {
+			String sp[] = l[i].split(" ");
+			this.liquids.add(new Liquid(sp[0], sp[1], true));
+		}
+
+		String m[] = mix.split(", ");
+		for (int i = 0; i<l.length; i++) {
+			String sp[] = l[i].split(" ");
+			this.liquids.add(new Liquid(sp[0], sp[1], false));
+		}
+		
+		String s[] = sol.split(", ");
+		for (int i = 0; i<s.length; i++) {
+			String sp[] = s[i].split(" ");
+			this.solids.add(new Solid(sp[0], sp[1], false));
+		}
 	}
 	
 	

@@ -188,7 +188,7 @@ public class DataBaseAdaptor {
 		try {
 			PreparedStatement statement = c.prepareStatement(
 					"INSERT INTO drinks" 
-					+ "(name, alcohol, mixer, solid, glass, directions) "
+					+ "(name, alcohol, mixer, solid, glass, directions, hangoverPotential) "
 					+ "VALUES "
 					+ "(?,?,?,?,?,?,?)");
 			statement.setString(1,name);

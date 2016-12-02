@@ -118,6 +118,23 @@ public class DataBaseAdaptor {
 		return drinkList;
 	}
 
+	public ArrayList<String> getAllDrinksSupressed() {
+		ArrayList<String> drinkList = null;
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
+		      while ( rs.next() ) {
+		         String name = rs.getString("name");
+			      //System.out.println("Name = " + name);
+			      
+		      }
+		      rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		return drinkList;
+	}
 	public String[] getDrinkByName(String name) {
 		String drink[] = new String[6];
 		String query = "SELECT * FROM drinks WHERE name = ?";

@@ -27,7 +27,7 @@ public class DataBaseAdaptor {
 		//dom needs to add squlite jar file to build path
 		//drink me propteries pick it
 		db.getAllDrinks();
-		
+		//run create drinks to update database after removing stuff
 	}
 	
 	public void createBasicDrinkDB() {

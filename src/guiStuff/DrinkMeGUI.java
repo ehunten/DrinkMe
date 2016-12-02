@@ -123,7 +123,7 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmViewAll = new JMenuItem("View All");
 		mntmViewAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewAll  v = new ViewAll(db);
+				ViewMultiple  v = new ViewMultiple(db);
 				v.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				v.setVisible(true);
 			}
@@ -133,7 +133,10 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmViewRandom = new JMenuItem("View Random");
 		mntmViewRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewRandom w = new ViewRandom(db);
+				String name = "";
+				//get a random name and pass to display drink
+				//how to get random name from database?
+				DisplayDrink w = new DisplayDrink(db,name);
 				w.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				w.setVisible(true);
 			}

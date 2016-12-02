@@ -8,6 +8,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.DataBaseAdaptor;
+
 public class DisplayDrink extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -15,11 +17,11 @@ public class DisplayDrink extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(DataBaseAdaptor db, String name) {
 		try {
-			DisplayDrink dialog = new DisplayDrink();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			DisplayDrink dialog = new DisplayDrink(db,name);
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,7 +30,7 @@ public class DisplayDrink extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public DisplayDrink() {
+	public DisplayDrink(DataBaseAdaptor db, String name) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

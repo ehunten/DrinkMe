@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.DataBaseAdaptor;
 
-public class ViewAll extends JDialog {
+public class ViewMultiple extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -21,7 +21,7 @@ public class ViewAll extends JDialog {
 	 */
 	public static void main(DataBaseAdaptor db) {
 		try {
-			ViewAll dialog = new ViewAll(db);
+			ViewMultiple dialog = new ViewMultiple(db);
 			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			//dialog.setVisible(true);
 		} catch (Exception e) {
@@ -32,7 +32,7 @@ public class ViewAll extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ViewAll(DataBaseAdaptor db) {
+	public ViewMultiple(DataBaseAdaptor db) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

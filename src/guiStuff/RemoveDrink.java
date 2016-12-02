@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class RemoveDrink extends JDialog {
 
@@ -48,6 +50,7 @@ public class RemoveDrink extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JLabel lblPleaseEnterThe = new JLabel("Please Enter the Name of");
+			lblPleaseEnterThe.setForeground(new Color(255, 0, 0));
 			lblPleaseEnterThe.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 22));
 			lblPleaseEnterThe.setHorizontalAlignment(SwingConstants.CENTER);
 			lblPleaseEnterThe.setBounds(10, 11, 414, 38);
@@ -55,6 +58,7 @@ public class RemoveDrink extends JDialog {
 		}
 		{
 			JLabel lblTheDrinkTo = new JLabel("the Drink to Be Removed");
+			lblTheDrinkTo.setForeground(new Color(255, 0, 0));
 			lblTheDrinkTo.setHorizontalAlignment(SwingConstants.CENTER);
 			lblTheDrinkTo.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 22));
 			lblTheDrinkTo.setBounds(10, 48, 414, 22);
@@ -66,6 +70,12 @@ public class RemoveDrink extends JDialog {
 			txtName.setBounds(146, 81, 149, 20);
 			contentPanel.add(txtName);
 			txtName.setColumns(10);
+		}
+		{
+			JLabel lblRemovebackground = new JLabel("");
+			lblRemovebackground.setIcon(new ImageIcon("src/RemoveDrinkBack.jpg"));
+			lblRemovebackground.setBounds(0, 0, 434, 228);
+			contentPanel.add(lblRemovebackground);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -84,26 +94,21 @@ public class RemoveDrink extends JDialog {
 									JOptionPane.PLAIN_MESSAGE);
 						}
 						else{
-							try {
-								DataBaseAdaptor db = new DataBaseAdaptor();
-								String[] temp = db.getDrinkByName(remove);
-								if(temp[0] != null){
-									db.dropDrink(remove);
-									JOptionPane.showMessageDialog(null, 
-											"The Drink "+ remove + "has been Removed.", 
-											"Success",
-											JOptionPane.PLAIN_MESSAGE);
-									dispose();
-								}
-								else{
-									JOptionPane.showMessageDialog(null, 
-											"Drink Does Not Exsit, Please Try Again", 
-											"Error",
-											JOptionPane.PLAIN_MESSAGE);
-								}
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+							//DataBaseAdaptor db = new DataBaseAdaptor();
+							String[] temp = db.getDrinkByName(remove);
+							if(temp[0] != null){
+								db.dropDrink(remove);
+								JOptionPane.showMessageDialog(null, 
+										"The Drink "+ remove + "has been Removed.", 
+										"Success",
+										JOptionPane.PLAIN_MESSAGE);
+								dispose();
+							}
+							else{
+								JOptionPane.showMessageDialog(null, 
+										"Drink Does Not Exsit, Please Try Again", 
+										"Error",
+										JOptionPane.PLAIN_MESSAGE);
 							}
 							
 						}

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -55,12 +56,17 @@ public class ViewMultiple extends JDialog {
 		int x = 0;
 		int y = 0;
 		specialIndex = 0;
-		for(int i=0; i<db.getAllDrinksSupressed().size(); ++i){
+		JButton[] buttons = new JButton[24];
+		ArrayList<String> names = db.getAllDrinksSupressed();
+		System.out.println(names.get(1) + names.get(2));
+		for(int i=0; i<names.size(); ++i){
 			specialIndex = i;
-			JButton btnDrink = new JButton(db.getAllDrinksSupressed().get(i));
+			JButton btnDrink = new JButton(names.get(i));
+			buttons[i] = btnDrink;
+			//JButton btnDrink = new JButton(names.get(i));
 			btnDrink.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					DisplayDrink d = new DisplayDrink(db,db.getAllDrinksSupressed().get(specialIndex));
+					DisplayDrink d = new DisplayDrink(db,names.get(specialIndex));
 					d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					d.setVisible(true);
 				}

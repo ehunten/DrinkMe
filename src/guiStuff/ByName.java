@@ -27,7 +27,7 @@ public class ByName extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+
 	public static void main(DataBaseAdaptor db) {
 		try {
 			ByName dialog = new ByName(db);
@@ -38,7 +38,7 @@ public class ByName extends JDialog {
 		}
 	}
 
-	/**
+
 	 * Create the dialog.
 	 */
 	public ByName(DataBaseAdaptor db) {

@@ -5,6 +5,15 @@ public class Liquid extends Ingredient{
 	private String temperature;
 	private boolean isAlcohol;
 	
+	public Liquid() {
+		this.temperature = "";
+		this.isAlcohol = false;
+	}
+	
+	public Liquid(String amt, String name, boolean isAlc) {
+		super(name, amt);
+		this.isAlcohol = isAlc;
+	}
 	
 	
 	public String getTemperature() {
@@ -36,8 +45,9 @@ public class Liquid extends Ingredient{
 		
 		String[] bits = in.split(",");
 		this.setName(bits[1]);
-		double d = Double.parseDouble(bits[0]);
-		this.setAmount(d);
+		//double d = Double.parseDouble(bits[0]);
+		//this.setAmount(d);
+		this.setAmount(bits[0]);
 		
 	}
 

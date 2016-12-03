@@ -23,18 +23,16 @@ public class DataBaseAdaptor {
 	public static void main(String[] args) throws SQLException {
 		DataBaseAdaptor db = new DataBaseAdaptor();
 		//db.createBasicDrinkDB();
-		
-		//dom needs to add squlite jar file to build path
-		//drink me propteries pick it
+
 		db.getAllDrinks();
-		//run create drinks to update database after removing stuff
 	}
 	
+	//Run this if you removed a bunch of drinks. This sets up the database
 	public void createBasicDrinkDB() {
 		try {
 			stmt = c.createStatement();
 		//////CREATE TABLE
-			/*
+			/* Only uncomment this if you deleted final.db and need to re-create the entire table
 			String sql = "CREATE TABLE drinks" 
 					+ "(id INTEGER PRIMARY KEY AUTOINCREMENT, " 
 					+ "name varchar(50), "
@@ -101,14 +99,14 @@ public class DataBaseAdaptor {
 	}
 	
 	public ArrayList<String> getAllDrinks() {
-		ArrayList<String> drinkList = null;
+		ArrayList<String> drinkList = new ArrayList<String>();
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
 		      while ( rs.next() ) {
 		         String name = rs.getString("name");
-			      System.out.println("Name = " + name);
-			      
+			      System.out.println("Name = " + name); //just for error checking, can be removed/commented
+			      drinkList.add(name);
 		      }
 		      rs.close();
 		} catch (SQLException e) {
@@ -118,6 +116,8 @@ public class DataBaseAdaptor {
 		return drinkList;
 	}
 
+	//We can probably delete this if all it does is getAllDrinks without printing to the console?? That's just for error checking,
+	//not for functionality -- also this won't add any drinks to the array list
 	public ArrayList<String> getAllDrinksSupressed() {
 		ArrayList<String> drinkList = null;
 		try {
@@ -136,6 +136,26 @@ public class DataBaseAdaptor {
 		}  
 		return drinkList;
 	}
+	
+	public String getRandomDrink() {
+		String drink = "";
+		String query = "SELECT name FROM drinks ORDER BY RAND() LIMIT 1";
+		try {
+			PreparedStatement prep = c.prepareStatement(query);
+			ResultSet rs = prep.executeQuery();
+		    while (rs.next()) {
+		    	drink = rs.getString("name");
+		    }
+		    prep.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return drink;
+	}
+	
 	public String[] getDrinkByName(String name) {
 		String drink[] = new String[6];
 		String query = "SELECT * FROM drinks WHERE name = ?";

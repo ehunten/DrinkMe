@@ -46,6 +46,7 @@ public class AddDrink extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(DataBaseAdaptor db) {
 		try {
 			AddDrink dialog = new AddDrink(db);
@@ -55,7 +56,7 @@ public class AddDrink extends JDialog {
 			e.printStackTrace();
 		}
 	}
-
+	*/
 	/**
 	 * Create the dialog.
 	 */
@@ -293,8 +294,6 @@ public class AddDrink extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String[] temp = userInput.giveStrings();
-						//creates new connection to the database
-						//DataBaseAdaptor db = new DataBaseAdaptor();
 						//adds in the new drink using the proper formatted strings
 						db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
 						//db.getAllDrinks();

@@ -24,7 +24,7 @@ public class ViewMultiple extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(DataBaseAdaptor db) {
 		try {
 			ViewMultiple dialog = new ViewMultiple(db);
@@ -35,7 +35,7 @@ public class ViewMultiple extends JDialog {
 		}
 	}
 
-	/**
+
 	 * Create the dialog.
 	 */
 	public ViewMultiple(DataBaseAdaptor db) {

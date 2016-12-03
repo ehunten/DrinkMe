@@ -29,7 +29,7 @@ public class ByIngred extends JDialog {
 
 	/**
 	 * Launch the application.
-	 */
+
 	public static void main(DataBaseAdaptor db) {
 		try {
 			ByIngred dialog = new ByIngred(db);
@@ -40,7 +40,6 @@ public class ByIngred extends JDialog {
 		}
 	}
 
-	/**
 	 * Create the dialog.
 	 */
 	public ByIngred(DataBaseAdaptor db) {

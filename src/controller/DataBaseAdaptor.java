@@ -125,6 +125,7 @@ public class DataBaseAdaptor {
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
 		      while ( rs.next() ) {
 		         String name = rs.getString("name");
+		         //drinkList.add(name);
 			      //System.out.println("Name = " + name);
 			      
 		      }

@@ -57,7 +57,7 @@ public class ViewMultiple extends JDialog {
 		int y = 0;
 		specialIndex = 0;
 		JButton[] buttons = new JButton[24];
-		ArrayList<String> names = db.getAllDrinksSupressed();
+		ArrayList<String> names = db.getAllDrinks();
 		System.out.println(names.get(1) + names.get(2));
 		for(int i=0; i<names.size(); ++i){
 			specialIndex = i;
@@ -66,6 +66,7 @@ public class ViewMultiple extends JDialog {
 			//JButton btnDrink = new JButton(names.get(i));
 			btnDrink.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
 					DisplayDrink d = new DisplayDrink(db,names.get(specialIndex));
 					d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					d.setVisible(true);

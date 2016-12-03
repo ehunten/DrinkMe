@@ -105,7 +105,7 @@ public class DataBaseAdaptor {
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
 		      while ( rs.next() ) {
 		         String name = rs.getString("name");
-			      System.out.println("Name = " + name); //just for error checking, can be removed/commented
+			     // System.out.println("Name = " + name); //just for error checking, can be removed/commented
 			      drinkList.add(name);
 		      }
 		      rs.close();
@@ -116,26 +116,7 @@ public class DataBaseAdaptor {
 		return drinkList;
 	}
 
-	//We can probably delete this if all it does is getAllDrinks without printing to the console?? That's just for error checking,
-	//not for functionality -- also this won't add any drinks to the array list
-	public ArrayList<String> getAllDrinksSupressed() {
-		ArrayList<String> drinkList = null;
-		try {
-			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery( "SELECT * FROM drinks;" );
-		      while ( rs.next() ) {
-		         String name = rs.getString("name");
-		         //drinkList.add(name);
-			      //System.out.println("Name = " + name);
-			      
-		      }
-		      rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}  
-		return drinkList;
-	}
+
 	
 	public String getRandomDrink() {
 		String drink = "";

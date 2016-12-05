@@ -20,6 +20,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RemoveDrink extends JDialog {
 
@@ -50,7 +52,9 @@ public class RemoveDrink extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JLabel lblPleaseEnterThe = new JLabel("Please Enter the Name of");
+			lblPleaseEnterThe.setBackground(Color.LIGHT_GRAY);
 			lblPleaseEnterThe.setForeground(new Color(255, 0, 0));
+			lblPleaseEnterThe.setOpaque(true);
 			lblPleaseEnterThe.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 22));
 			lblPleaseEnterThe.setHorizontalAlignment(SwingConstants.CENTER);
 			lblPleaseEnterThe.setBounds(10, 11, 414, 38);
@@ -58,16 +62,24 @@ public class RemoveDrink extends JDialog {
 		}
 		{
 			JLabel lblTheDrinkTo = new JLabel("the Drink to Be Removed");
+			lblTheDrinkTo.setBackground(Color.LIGHT_GRAY);
 			lblTheDrinkTo.setForeground(new Color(255, 0, 0));
+			lblTheDrinkTo.setOpaque(true);
 			lblTheDrinkTo.setHorizontalAlignment(SwingConstants.CENTER);
 			lblTheDrinkTo.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 22));
-			lblTheDrinkTo.setBounds(10, 48, 414, 22);
+			lblTheDrinkTo.setBounds(10, 49, 414, 31);
 			contentPanel.add(lblTheDrinkTo);
 		}
 		{
 			txtName = new JTextField();
+			txtName.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					txtName.selectAll();
+				}
+			});
 			txtName.setText("Name");
-			txtName.setBounds(146, 81, 149, 20);
+			txtName.setBounds(146, 100, 149, 20);
 			contentPanel.add(txtName);
 			txtName.setColumns(10);
 		}
@@ -99,7 +111,7 @@ public class RemoveDrink extends JDialog {
 							if(temp[0] != null){
 								db.dropDrink(remove);
 								JOptionPane.showMessageDialog(null, 
-										"The Drink "+ remove + "has been Removed.", 
+										"The Drink "+ remove + " has been Removed.", 
 										"Success",
 										JOptionPane.PLAIN_MESSAGE);
 								dispose();

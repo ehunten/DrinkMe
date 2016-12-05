@@ -24,7 +24,12 @@ public class DataBaseAdaptor {
 		DataBaseAdaptor db = new DataBaseAdaptor();
 		//db.createBasicDrinkDB();
 
-		db.getAllDrinks();
+		//db.getAllDrinks();
+		
+//		String temp[] = db.getDrinkByName("Vodka Cranberry");
+//		for(String s: temp){
+//			System.out.println(s);
+//		}
 	}
 	
 	//Run this if you removed a bunch of drinks. This sets up the database
@@ -217,7 +222,7 @@ public class DataBaseAdaptor {
 			statement.setString(4,solid);
 			statement.setString(5,glass);
 			statement.setString(6,directions);
-			statement.setString(6, hp);
+			statement.setString(7, hp);
 			statement.executeUpdate();
 	        c.commit();
 		} catch (SQLException e) {

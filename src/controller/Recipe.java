@@ -75,7 +75,7 @@ public class Recipe {
 	}
 	
 	public String[] giveStrings(){
-		String[] output = {"","","","","","",""};
+		String output[] = {"","","","","","",""};
 		//recpie object to seperate strings
 		//name string, alc string (amount name, amount name)
 		//mixer string, solids string, glass STring, directions string
@@ -96,11 +96,13 @@ public class Recipe {
 		}
 		output[4] = this.getGlass().getShape();
 		String directString = "";
-		String[] temp = this.getDirections();
+		String temp[] = this.getDirections();
 		for(int i=0; i<this.getDirections().length; ++i){
 			directString = directString + temp[i] + ", ";
 		}
+		//System.out.println("Before" + directString);
 		directString = directString.replaceAll("[\\n\\r]", "");
+		//System.out.println("After" + directString);
 		output[5] = directString;
 		output[6] = this.getHangoverPotential();
 		return output;

@@ -100,9 +100,9 @@ public class Recipe {
 		for(int i=0; i<this.getDirections().length; ++i){
 			directString = directString + temp[i] + ", ";
 		}
-		System.out.println("Before" + directString);
+		//System.out.println("Before" + directString);
 		directString = directString.replaceAll("[\\n\\r]", "");
-		System.out.println("After" + directString);
+		//System.out.println("After" + directString);
 		output[5] = directString;
 		output[6] = this.getHangoverPotential();
 		return output;

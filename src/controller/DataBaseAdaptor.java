@@ -22,7 +22,7 @@ public class DataBaseAdaptor {
 	
 	public static void main(String[] args) throws SQLException {
 		DataBaseAdaptor db = new DataBaseAdaptor();
-		//db.createBasicDrinkDB();
+		db.createBasicDrinkDB();
 
 		db.getAllDrinks();
 	}

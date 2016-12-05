@@ -109,7 +109,10 @@ public class ByIngred extends JDialog {
 										dispose();
 									}
 									else{
-										//display multiple drinks at once 
+										ViewMultiple view = new ViewMultiple(db,temp);
+										view.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+										view.setVisible(true);
+										dispose();
 									}
 								}
 								else{

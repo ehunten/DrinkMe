@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
@@ -134,6 +135,10 @@ public class DrinkMeGUI extends JFrame {
 		mntmViewRandom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = "";
+				Random ran = new Random();
+				int random = ran.nextInt(db.getAllDrinks().size()) + 0;
+				
+				name = db.getAllDrinks().get(random);
 				//get a random name and pass to display drink
 				//how to get random name from database?
 				DisplayDrink w = new DisplayDrink(db,name);

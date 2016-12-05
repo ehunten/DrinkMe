@@ -58,7 +58,7 @@ public class ViewMultiple extends JDialog {
 		specialIndex = 0;
 		JButton[] buttons = new JButton[24];
 		ArrayList<String> names = db.getAllDrinks();
-		System.out.println(names.get(1) + names.get(2));
+		
 		for(int i=0; i<names.size(); ++i){
 			specialIndex = i;
 			JButton btnDrink = new JButton(names.get(i));

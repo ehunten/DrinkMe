@@ -104,7 +104,7 @@ public class DisplayDrink extends JDialog {
 			label.setIcon(new ImageIcon("src/lowballer.jpg"));
 		}else if (temp[3].equals("Shot")){
 			label.setIcon(new ImageIcon("src/Shot.jpg"));
-		}else if (temp[3].equals("Daiquiri")){
+		}else if (temp[3].equals("Daquiri")){
 			label.setIcon(new ImageIcon("src/Daiquiri.png"));
 		}
 		
@@ -120,7 +120,7 @@ public class DisplayDrink extends JDialog {
 		}
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Dominique\\Desktop\\DrinkMe\\project\\DrinkMe\\src\\Gray.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("src/Gray.jpg"));
 		lblNewLabel.setBounds(0, 0, 434, 297);
 		contentPanel.add(lblNewLabel);
 		{

@@ -83,15 +83,6 @@ public class AddDrink extends JDialog {
 		}
 		{
 			txtName = new JTextField();
-			txtName.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					//figure out how to detect an enter in the field
-					String name = txtName.getText();
-					userInput.setName(name);
-					output = name + System.lineSeparator();
-					textArea.setText(output);
-				}
-			});
 			txtName.setBounds(185, 38, 289, 20);
 			txtName.setHorizontalAlignment(SwingConstants.LEFT);
 			txtName.setText("Name");
@@ -123,14 +114,14 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype.getText());
 						curr.setAlcohol(true);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						
 					}
 					else{
 						JOptionPane.showMessageDialog(null, 
 								"Please use correct formatting:", 
-								"Name,Color,Temp,Amount", 
+								"Amount (include units in amount), Name", 
 								JOptionPane.PLAIN_MESSAGE);
 					}
 				}
@@ -163,7 +154,7 @@ public class AddDrink extends JDialog {
 						curr.parse(txtamounttype_1.getText());
 						curr.setAlcohol(false);
 						userInput.getLiquids().add(curr);
-						output = output + curr.getAmount() + " oz " + curr.getName() + System.lineSeparator();
+						output = output + curr.getAmount() + " " + curr.getName() + System.lineSeparator();
 						textArea.setText(output);
 						
 						//display recipe in box
@@ -171,7 +162,7 @@ public class AddDrink extends JDialog {
 					else{
 						JOptionPane.showMessageDialog(null, 
 								"Please use correct formatting:", 
-								"Name,Color,Temp,Amount", 
+								"Amount (include units in amount), Name", 
 								JOptionPane.PLAIN_MESSAGE);
 					}
 				}
@@ -210,7 +201,7 @@ public class AddDrink extends JDialog {
 					else{
 						JOptionPane.showMessageDialog(null, 
 								"Please use correct formatting:", 
-								"Name,Amount,Optional?(Y,N)", 
+								"Amount (include units in amount), Name", 
 								JOptionPane.PLAIN_MESSAGE);
 					}
 				}
@@ -259,7 +250,7 @@ public class AddDrink extends JDialog {
 				direct = editorPane.getText();
 				userInput.setDirectString(direct);
 				if(direct.length() <=225){
-					String[] bits = direct.split("\n");
+					String bits[] = direct.split("\n");
 					userInput.setDirections(bits);
 					output = output + direct;
 					textArea.setText(output);
@@ -292,18 +283,35 @@ public class AddDrink extends JDialog {
 					txtHangoverPotential.selectAll();
 				}
 			});
-			txtHangoverPotential.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
+			txtHangoverPotential.setText("Hangover Potential");
+			txtHangoverPotential.setBounds(185, 186, 289, 20);
+			contentPanel.add(txtHangoverPotential);
+			txtHangoverPotential.setColumns(10);
+		}
+		
+		JButton btnAddName = new JButton("Add Name");
+		btnAddName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String name = txtName.getText();
+				userInput.setName(name);
+				output = name + System.lineSeparator();
+				textArea.setText(output);
+			}
+		});
+		btnAddName.setBounds(484, 37, 114, 23);
+		contentPanel.add(btnAddName);
+		{
+			JButton btnAddHp = new JButton("Add HP");
+			btnAddHp.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					String hp = txtHangoverPotential.getText();
 					userInput.setHangoverPotential(hp);
 					output = output +  hp + System.lineSeparator();
 					textArea.setText(output);
 				}
 			});
-			txtHangoverPotential.setText("Hangover Potential");
-			txtHangoverPotential.setBounds(185, 186, 289, 20);
-			contentPanel.add(txtHangoverPotential);
-			txtHangoverPotential.setColumns(10);
+			btnAddHp.setBounds(484, 185, 114, 23);
+			contentPanel.add(btnAddHp);
 		}
 		
 		JLabel lblAdddrinkbackground = new JLabel("");

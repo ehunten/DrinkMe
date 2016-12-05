@@ -20,6 +20,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RemoveDrink extends JDialog {
 
@@ -70,6 +72,12 @@ public class RemoveDrink extends JDialog {
 		}
 		{
 			txtName = new JTextField();
+			txtName.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					txtName.selectAll();
+				}
+			});
 			txtName.setText("Name");
 			txtName.setBounds(146, 100, 149, 20);
 			contentPanel.add(txtName);
@@ -103,7 +111,7 @@ public class RemoveDrink extends JDialog {
 							if(temp[0] != null){
 								db.dropDrink(remove);
 								JOptionPane.showMessageDialog(null, 
-										"The Drink "+ remove + "has been Removed.", 
+										"The Drink "+ remove + " has been Removed.", 
 										"Success",
 										JOptionPane.PLAIN_MESSAGE);
 								dispose();

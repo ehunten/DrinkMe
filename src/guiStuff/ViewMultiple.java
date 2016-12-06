@@ -12,11 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.DataBaseAdaptor;
-import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
@@ -24,7 +22,6 @@ import java.awt.Color;
 public class ViewMultiple extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private int specialIndex;
 	public ArrayList<String> names;
 
 	/**
@@ -115,6 +112,7 @@ public class ViewMultiple extends JDialog {
 			y = y+1;
 		
 		}
+		//contentPanel.pack();
 		
 		
 		{

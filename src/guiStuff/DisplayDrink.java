@@ -9,15 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
-import java.awt.Dialog.ModalityType;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import controller.DataBaseAdaptor;
-import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.Color;
 

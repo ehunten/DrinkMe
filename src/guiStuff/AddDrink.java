@@ -19,9 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
@@ -41,7 +39,6 @@ public class AddDrink extends JDialog {
 	private JTextArea textArea;
 	private String output;
 	private JEditorPane editorPane;
-	private final int maxChar = 225;
 	private JTextField txtHangoverPotential;
 	
 

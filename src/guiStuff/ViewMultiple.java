@@ -16,11 +16,16 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Color;
 
 public class ViewMultiple extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private int specialIndex;
+	public ArrayList<String> names;
 
 	/**
 	 * Launch the application.
@@ -38,36 +43,62 @@ public class ViewMultiple extends JDialog {
 
 	 * Create the dialog.
 	 */
-	public ViewMultiple(DataBaseAdaptor db) {
+	public ViewMultiple(DataBaseAdaptor db,ArrayList<String> drinksWith) {
 		setTitle("View");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 300);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(102, 0, 255));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
-		gbl_contentPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPanel.setLayout(gbl_contentPanel);
 		
 		
 		//four collums and 6 rows availible. after 24 drinks throw error.
 		int x = 0;
 		int y = 0;
-		specialIndex = 0;
+		
+		
 		JButton[] buttons = new JButton[24];
-		ArrayList<String> names = db.getAllDrinks();
-		System.out.println(names.get(1) + names.get(2));
+		if(drinksWith.size() == 0){
+			
+			names = db.getAllDrinks();
+		}
+		else{
+			names = drinksWith;
+			
+		}
+		
+	
+		if(names.size() > 24){
+			JOptionPane.showMessageDialog(null, 
+					"Exceeds Maximum number of recipes", 
+					"please remove recipes", 
+					JOptionPane.PLAIN_MESSAGE);
+			dispose();
+		}
+		
 		for(int i=0; i<names.size(); ++i){
-			specialIndex = i;
+			
 			JButton btnDrink = new JButton(names.get(i));
 			buttons[i] = btnDrink;
 			//JButton btnDrink = new JButton(names.get(i));
 			btnDrink.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
-					DisplayDrink d = new DisplayDrink(db,names.get(specialIndex));
+					int found = 0;
+					Object src = e.getSource();
+					for(int j=0; j<buttons.length; ++j){
+						if(src == buttons[j]){
+							found = j;
+						}
+					}
+					DisplayDrink d = new DisplayDrink(db,names.get(found));
+					//System.out.println(names.get(found));
+					//yay button name is passed in correctly
 					d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					d.setVisible(true);
 				}
@@ -78,8 +109,8 @@ public class ViewMultiple extends JDialog {
 			gbc_btnDrink.gridy = y;
 			contentPanel.add(btnDrink, gbc_btnDrink);
 			if(y==6){
-				y =1;
-				x= x+2;
+				y = -1;
+				x = x+2;
 			}
 			y = y+1;
 		

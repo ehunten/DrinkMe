@@ -25,6 +25,7 @@ public class ViewMultiple extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private int specialIndex;
+	public ArrayList<String> names;
 
 	/**
 	 * Launch the application.
@@ -42,7 +43,7 @@ public class ViewMultiple extends JDialog {
 
 	 * Create the dialog.
 	 */
-	public ViewMultiple(DataBaseAdaptor db) {
+	public ViewMultiple(DataBaseAdaptor db,ArrayList<String> drinksWith) {
 		setTitle("View");
 		setBounds(100, 100, 500, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -61,8 +62,17 @@ public class ViewMultiple extends JDialog {
 		int x = 0;
 		int y = 0;
 		
+		
 		JButton[] buttons = new JButton[24];
-		ArrayList<String> names = db.getAllDrinks();
+		if(drinksWith.size() == 0){
+			
+			names = db.getAllDrinks();
+		}
+		else{
+			names = drinksWith;
+			
+		}
+		
 	
 		if(names.size() > 24){
 			JOptionPane.showMessageDialog(null, 

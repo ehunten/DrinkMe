@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 
@@ -124,7 +125,8 @@ public class DrinkMeGUI extends JFrame {
 		JMenuItem mntmViewAll = new JMenuItem("View All");
 		mntmViewAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewMultiple  v = new ViewMultiple(db);
+				ArrayList<String> empty = new ArrayList<String>();
+				ViewMultiple  v = new ViewMultiple(db,empty);
 				v.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				v.setVisible(true);
 			}

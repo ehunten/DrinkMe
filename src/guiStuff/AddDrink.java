@@ -1,5 +1,6 @@
 package guiStuff;
 
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -13,15 +14,13 @@ import org.ingredients.Liquid;
 import org.ingredients.Solid;
 
 import controller.DataBaseAdaptor;
-import controller.Recipe;
+import org.ingredients.Recipe;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;

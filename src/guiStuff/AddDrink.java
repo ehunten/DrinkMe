@@ -10,11 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.ingredients.Liquid;
-import org.ingredients.Solid;
+import org.*;
 
 import controller.DataBaseAdaptor;
-import org.ingredients.Recipe;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;

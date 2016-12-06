@@ -1,8 +1,6 @@
-package org.ingredients;
+package org;
 
 import java.util.ArrayList;
-
-import org.ingredients.*;
 
 public class Recipe {
 

@@ -1,4 +1,4 @@
-package org.ingredients;
+package org;
 
 public abstract class Ingredient {
 

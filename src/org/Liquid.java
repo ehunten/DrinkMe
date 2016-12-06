@@ -1,4 +1,4 @@
-package org.ingredients;
+package org;
 
 public class Liquid extends Ingredient{
 

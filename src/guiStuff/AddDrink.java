@@ -10,9 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.*;
-
 import controller.DataBaseAdaptor;
+import org.ingredients.*;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -38,7 +37,6 @@ public class AddDrink extends JDialog {
 	private JTextArea textArea;
 	private String output;
 	private JEditorPane editorPane;
-	private final int maxChar = 225;
 	private JTextField txtHangoverPotential;
 	
 
@@ -324,13 +322,18 @@ public class AddDrink extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						String[] temp = userInput.giveStrings();
-						//adds in the new drink using the proper formatted strings
-						db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
-						//db.getAllDrinks();
-						
-
-						dispose();
+						if(userInput.getName().isEmpty()){
+							JOptionPane.showMessageDialog(null, 
+									"Please enter a valid drink name", 
+									"Error",
+									JOptionPane.PLAIN_MESSAGE);
+						}
+						else{
+							String[] temp = userInput.giveStrings();
+							//adds in the new drink using the proper formatted strings
+							db.addDrink(temp[0], temp[1], temp[2], temp[3], temp[4], temp[5],temp[6]);
+							dispose();
+						}
 					}
 				});
 				okButton.setActionCommand("OK");

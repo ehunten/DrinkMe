@@ -1,4 +1,4 @@
-package org;
+package org.ingredients;
 
 import java.util.ArrayList;
 

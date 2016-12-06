@@ -1,4 +1,4 @@
-package org;
+package org.ingredients;
 
 public class Solid extends Ingredient {
 
@@ -26,11 +26,6 @@ public class Solid extends Ingredient {
 
 
 
-	@Override
-	public String print() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

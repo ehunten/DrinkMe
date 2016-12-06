@@ -91,7 +91,7 @@ public class DisplayDrink extends JDialog {
 		
 		if(temp[3].equals("Highball")){
 			label.setIcon(new ImageIcon("src/High.jpg"));
-		}else if (temp[3].equals("Cocktail glass")){
+		}else if (temp[3].equals("Martini") || temp[3].equals("Cocktail glass")){
 			label.setIcon(new ImageIcon("src/Martini.jpg"));
 		}else if (temp[3].equals("Margarita")){
 			label.setIcon(new ImageIcon("src/mar.jpg"));

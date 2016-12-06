@@ -64,11 +64,13 @@ public class ViewMultiple extends JDialog {
 		
 		
 		JButton[] buttons = new JButton[24];
-		if(drinksWith.size() != 1){
-			names = drinksWith;
+		if(drinksWith.size() == 0){
+			
+			names = db.getAllDrinks();
 		}
 		else{
-			 names = db.getAllDrinks();
+			names = drinksWith;
+			
 		}
 		
 	

@@ -58,11 +58,11 @@ public class ByIngred extends JDialog {
 		}
 		
 		rdbtnAlcohol = new JRadioButton("Alcohol");
-		rdbtnAlcohol.setBounds(148, 53, 65, 23);
+		rdbtnAlcohol.setBounds(99, 53, 109, 23);
 		contentPanel.add(rdbtnAlcohol);
 		
 		rdbtnMixer = new JRadioButton("Mixer");
-		rdbtnMixer.setBounds(225, 53, 58, 23);
+		rdbtnMixer.setBounds(230, 53, 91, 23);
 		contentPanel.add(rdbtnMixer);
 		
 		JLabel lblEnterName = new JLabel("Enter Name");
@@ -132,7 +132,10 @@ public class ByIngred extends JDialog {
 										dispose();
 									}
 									else{
-										//display multiple drinks at once 
+										ViewMultiple view = new ViewMultiple(db,temp);
+										view.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+										view.setVisible(true);
+										dispose();
 									}
 								}
 								else{

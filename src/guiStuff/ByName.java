@@ -17,7 +17,6 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class ByName extends JDialog {

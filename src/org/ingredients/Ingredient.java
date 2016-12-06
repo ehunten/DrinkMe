@@ -37,7 +37,7 @@ public abstract class Ingredient {
 	}
 
 	
-	public abstract String print();
+
 	
 	public abstract void parse(String in);
 	

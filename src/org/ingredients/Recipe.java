@@ -2,8 +2,6 @@ package org.ingredients;
 
 import java.util.ArrayList;
 
-import org.ingredients.*;
-
 public class Recipe {
 
 	private String name;

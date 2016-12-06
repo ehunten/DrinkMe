@@ -32,11 +32,6 @@ public class Liquid extends Ingredient{
 		this.isAlcohol = isAlcohol;
 	}
 
-	@Override
-	public String print() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void parse(String in) {

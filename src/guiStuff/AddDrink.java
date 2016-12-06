@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.ingredients.Liquid;
+import org.ingredients.Recipe;
 import org.ingredients.Solid;
 
 import controller.DataBaseAdaptor;
-import controller.Recipe;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;

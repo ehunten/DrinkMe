@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.DataBaseAdaptor;
-import org.*;
+import org.ingredients.*;
 
 
 import javax.swing.JTextField;

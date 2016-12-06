@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class DataBaseAdaptor {
 
-	Connection c = null;
-	Statement stmt = null;
+	private Connection c = null;
+	private Statement stmt = null;
 	
 	public DataBaseAdaptor() throws SQLException {
 		try {

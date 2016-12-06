@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 import controller.DataBaseAdaptor;
 import org.ingredients.*;
 
-
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;

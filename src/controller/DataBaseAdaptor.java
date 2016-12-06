@@ -209,7 +209,7 @@ public class DataBaseAdaptor {
 		return drinks;
 	}
 
-	public void addDrink(String name, String alcohol, String mixer, String solid, String glass, String directions, String hp) {
+	public void addDrink(String name, String alcohol, String mixer, String solid, String glass, String direc, String hp) {
 		try {
 			PreparedStatement statement = c.prepareStatement(
 					"INSERT INTO drinks" 
@@ -221,7 +221,7 @@ public class DataBaseAdaptor {
 			statement.setString(3,mixer);
 			statement.setString(4,solid);
 			statement.setString(5,glass);
-			statement.setString(6,directions);
+			statement.setString(6,direc);
 			statement.setString(7, hp);
 			statement.executeUpdate();
 	        c.commit();

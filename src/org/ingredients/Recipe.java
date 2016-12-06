@@ -1,4 +1,4 @@
-package controller;
+package org.ingredients;
 
 import java.util.ArrayList;
 
@@ -100,9 +100,7 @@ public class Recipe {
 		for(int i=0; i<this.getDirections().length; ++i){
 			directString = directString + temp[i] + ", ";
 		}
-		//System.out.println("Before" + directString);
 		directString = directString.replaceAll("[\\n\\r]", "");
-		//System.out.println("After" + directString);
 		output[5] = directString;
 		output[6] = this.getHangoverPotential();
 		return output;
